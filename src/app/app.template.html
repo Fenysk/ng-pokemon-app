@@ -12,8 +12,8 @@
 
     <ul class="grid grid-cols-3 gap-4 leading-5 mt-4">
         @for (pokemon of pokemonList; track pokemon.id) {
-        <li class="flex items-center p-2 border h-32 gap-4 shadow-md">
-            <img [src]=" pokemon.picture" [alt]="pokemon.name" class="w-1/3">
+        <li class="flex items-center p-2 border h-32 gap-4 shadow-md" pokemonBorderCard="red">
+            <img [src]="pokemon.picture" [alt]="pokemon.name" class="w-1/3">
             <div id="Infos" class="flex flex-col">
                 <span class="font-semibold">{{ pokemon.name }}</span>
                 <span class="text-sm">{{ formatDate(pokemon.created) }}</span>
