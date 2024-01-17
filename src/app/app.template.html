@@ -1,0 +1,12 @@
+<h1>Liste de pokémons</h1>
+
+<ol>
+    @for (pokemon of pokemonList; track pokemon.id) {
+    <li (click)="selectPokemon(pokemon)">
+        <span>{{ pokemon.name }}</span>
+        <img [src]="pokemon.picture" [alt]="pokemon.name" style="height: 50px;">
+    </li>
+    }
+</ol>
+
+<router-outlet></router-outlet>
