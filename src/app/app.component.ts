@@ -4,13 +4,14 @@ import { RouterOutlet } from '@angular/router';
 import { POKEMONS } from './mock-pokemon-list';
 import { Pokemon } from './pokemon';
 import { PokemonBorderCardDirective } from './border-card.directive';
+import { PokemonTypeColorPipe } from "./pokemon-type-color.pipe";
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [CommonModule, RouterOutlet, PokemonBorderCardDirective],
     templateUrl: 'app.template.html',
     styles: [],
+    imports: [CommonModule, RouterOutlet, PokemonBorderCardDirective, PokemonTypeColorPipe]
 })
 export class AppComponent implements OnInit {
     pokemonList: Pokemon[] = POKEMONS;
@@ -30,16 +31,6 @@ export class AppComponent implements OnInit {
         } else {
             this.pokemonSelected = undefined;
         }
-    }
-
-    formatDate(date: Date) {
-        return new Date(date).toLocaleDateString('fr-FR', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric'
-        });
     }
 
 }
