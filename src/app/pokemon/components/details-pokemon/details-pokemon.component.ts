@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Pokemon } from '../interfaces/pokemon';
-import { POKEMONS } from '../data/mock-pokemon-list';
 import { DatePipe } from '@angular/common';
-import { PokemonTypeColorPipe } from '../pipes/pokemon-type-color.pipe';
+import { PokemonTypeColorPipe } from '../../pipes/pokemon-type-color.pipe';
+import { Pokemon } from '../../interfaces/pokemon.interface';
+import { PokemonService } from '../../pokemon.service';
 
 @Component({
     imports: [RouterModule, DatePipe, PokemonTypeColorPipe],
@@ -14,13 +14,14 @@ import { PokemonTypeColorPipe } from '../pipes/pokemon-type-color.pipe';
 })
 export class DetailsPokemonComponent implements OnInit {
 
-    pokemonList: Pokemon[] = POKEMONS;
-    pokemonId: number | null = null;
-    pokemon: Pokemon | undefined;
-
     constructor(
         private route: ActivatedRoute,
+        private readonly pokemonService: PokemonService
     ) { }
+
+    pokemonList: Pokemon[] = this.pokemonService.getPokemonList();
+    pokemonId: number | null = null;
+    pokemon: Pokemon | undefined;
 
     ngOnInit() {
         this.pokemonId = Number(this.route.snapshot.paramMap.get('id'));

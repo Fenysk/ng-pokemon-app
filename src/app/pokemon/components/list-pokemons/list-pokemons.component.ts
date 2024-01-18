@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from '../interfaces/pokemon';
-import { POKEMONS } from '../data/mock-pokemon-list';
-import { PokemonBorderCardDirective } from '../directives/border-card.directive';
-import { PokemonTypeColorPipe } from '../pipes/pokemon-type-color.pipe';
 import { DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { PokemonBorderCardDirective } from '../../directives/border-card.directive';
+import { PokemonTypeColorPipe } from '../../pipes/pokemon-type-color.pipe';
+import { Pokemon } from '../../interfaces/pokemon.interface';
+import { PokemonService } from '../../pokemon.service';
 
 @Component({
     imports: [PokemonBorderCardDirective, PokemonTypeColorPipe, DatePipe, RouterModule],
@@ -14,7 +14,10 @@ import { RouterModule } from '@angular/router';
     styles: ``
 })
 export class ListPokemonsComponent implements OnInit {
-    pokemonList: Pokemon[] = POKEMONS;
+
+    constructor(private readonly pokemonService: PokemonService) { }
+
+    pokemonList: Pokemon[] = this.pokemonService.getPokemonList();
     pokemonSelected: Pokemon | undefined;
 
     ngOnInit() {
@@ -22,7 +25,7 @@ export class ListPokemonsComponent implements OnInit {
     }
 
     selectPokemon(pokemonId: number) {
-        this.pokemonList = POKEMONS;
+        this.pokemonList = this.pokemonService.getPokemonList();
         const pokemon: Pokemon | undefined = this.pokemonList.find(pokemon => pokemon.id === pokemonId)
 
         if (pokemon) {

@@ -5,6 +5,7 @@ import { PokemonTypeColorPipe } from './pipes/pokemon-type-color.pipe';
 import { RouterModule, Routes } from '@angular/router';
 import { ListPokemonsComponent } from './components/list-pokemons/list-pokemons.component';
 import { DetailsPokemonComponent } from './components/details-pokemon/details-pokemon.component';
+import { PokemonService } from './pokemon.service';
 
 const pokemonRoutes: Routes = [
     {
@@ -17,7 +18,6 @@ const pokemonRoutes: Routes = [
     }
 ]
 
-
 @NgModule({
     declarations: [],
     imports: [
@@ -27,6 +27,7 @@ const pokemonRoutes: Routes = [
         DetailsPokemonComponent,
         PokemonBorderCardDirective,
         PokemonTypeColorPipe
-    ]
+    ],
+    providers: [PokemonService]
 })
 export class PokemonModule { }
