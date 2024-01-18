@@ -12,16 +12,16 @@ export class PokemonTypeColorPipe implements PipeTransform {
 
         switch (pokemonType) {
             case 'Fire':
-                color = 'red-400';
+                color = 'red-500';
                 break;
             case 'Water':
-                color = 'blue-400';
+                color = 'blue-500';
                 break;
             case 'Leaf':
                 color = 'green-500';
                 break;
             case 'Poison':
-                color = 'purple-400';
+                color = 'purple-500';
                 break;
             case 'Flying':
                 color = 'indigo-400';
@@ -45,10 +45,10 @@ export class PokemonTypeColorPipe implements PipeTransform {
                 color = 'red-700';
                 break;
             case 'Psychic':
-                color = 'purple-600';
+                color = 'pink-600';
                 break;
             case 'Rock':
-                color = 'gray-600';
+                color = 'orange-900';
                 break;
             case 'Steel':
                 color = 'blue-600';
@@ -67,7 +67,7 @@ export class PokemonTypeColorPipe implements PipeTransform {
                 break;
         }
 
-        return `bg-${color} text-white`;
+        return `bg-${color}`;
     }
 
 }

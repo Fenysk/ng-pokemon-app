@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { POKEMONS } from './mock-pokemon-list';
-import { Pokemon } from './pokemon';
-import { PokemonBorderCardDirective } from './border-card.directive';
-import { PokemonTypeColorPipe } from "./pokemon-type-color.pipe";
+import { POKEMONS } from './data/mock-pokemon-list';
+import { Pokemon } from './interfaces/pokemon';
+import { PokemonBorderCardDirective } from './directives/border-card.directive';
+import { PokemonTypeColorPipe } from "./pipes/pokemon-type-color.pipe";
 
 @Component({
     selector: 'app-root',
