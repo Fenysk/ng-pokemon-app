@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { Pokemon } from '../pokemon';
-import { POKEMONS } from '../mock-pokemon-list';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Pokemon } from '../interfaces/pokemon';
+import { POKEMONS } from '../data/mock-pokemon-list';
 import { DatePipe } from '@angular/common';
-import { PokemonTypeColorPipe } from '../pokemon-type-color.pipe';
+import { PokemonTypeColorPipe } from '../pipes/pokemon-type-color.pipe';
 
 @Component({
     imports: [RouterModule, DatePipe, PokemonTypeColorPipe],
@@ -20,7 +20,6 @@ export class DetailsPokemonComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private router: Router
     ) { }
 
     ngOnInit() {

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from '../pokemon';
-import { POKEMONS } from '../mock-pokemon-list';
-import { PokemonBorderCardDirective } from '../border-card.directive';
-import { PokemonTypeColorPipe } from '../pokemon-type-color.pipe';
+import { Pokemon } from '../interfaces/pokemon';
+import { POKEMONS } from '../data/mock-pokemon-list';
+import { PokemonBorderCardDirective } from '../directives/border-card.directive';
+import { PokemonTypeColorPipe } from '../pipes/pokemon-type-color.pipe';
 import { DatePipe } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
     imports: [PokemonBorderCardDirective, PokemonTypeColorPipe, DatePipe, RouterModule],
@@ -16,8 +16,6 @@ import { Router, RouterModule } from '@angular/router';
 export class ListPokemonsComponent implements OnInit {
     pokemonList: Pokemon[] = POKEMONS;
     pokemonSelected: Pokemon | undefined;
-
-    constructor(private router: Router) { }
 
     ngOnInit() {
         console.table(this.pokemonList);
