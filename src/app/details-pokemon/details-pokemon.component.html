@@ -1,0 +1,45 @@
+@if (!pokemon) {
+<div class="flex flex-col items-center">
+    <p>No Pokémon matches the ID {{ pokemonId }}</p>
+    <a routerLink="/pokemons" class="cursor-pointer hover:underline mt-4 block text-red-800">Back to list</a>
+</div>
+} @else {
+<h1 class="text-center text-2xl font-bold">{{pokemon.name}}</h1>
+
+<div id="Pokemon" class="mt-4 block w-2/3 max-w-[700px] mx-auto border shadow flex flex-wrap gap-4 p-4">
+    <img src="{{pokemon.picture}}" alt="{{pokemon.name}}" class="flex-1 object-contain max-h-[250px]" />
+    <div class="flex-1">
+        <table class="w-full">
+            <tr>
+                <td class="font-semibold">ID</td>
+                <td>{{pokemon.id}}</td>
+            </tr>
+            <tr>
+                <td class="font-semibold">Name</td>
+                <td>{{pokemon.name}}</td>
+            </tr>
+            <tr>
+                <td class="font-semibold">HP</td>
+                <td>{{pokemon.hp}}</td>
+            </tr>
+            <tr>
+                <td class="font-semibold">CP</td>
+                <td>{{pokemon.cp}}</td>
+            </tr>
+            <tr>
+                <td class="font-semibold">Types</td>
+                <td>
+                    @for (type of pokemon.types; track pokemon.id) {
+                    <span class="mr-2 px-3 py-1 rounded-full text-white {{ type | pokemonTypeColor }}">{{type}}</span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td class="font-semibold">Creation date</td>
+                <td>{{pokemon.created | date: 'dd/MM/yyyy'}}</td>
+            </tr>
+        </table>
+        <a routerLink="/pokemons" class="cursor-pointer hover:underline mt-4 block text-red-800">Back to list</a>
+    </div>
+</div>
+}

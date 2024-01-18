@@ -1,32 +1,8 @@
-<div class="p-4">
-    <h1 class="text-xl text-center">Liste de pokémons</h1>
-
-    @if (pokemonSelected) {
-    <p>Vous avez sélectionné le pokémon {{ pokemonSelected.name }}</p>
-    } @else {
-    <p>Aucun pokémon sélectionné.</p>
-    }
-
-    <input class="border-2 p-1" type="number" placeholder="ID du Pokémon" #input
-        (keyup.enter)="selectPokemon(+input.value)">
-
-    <ul class="grid grid-cols-3 gap-4 leading-5 mt-4">
-        @for (pokemon of pokemonList; track pokemon.id) {
-        <li class="flex items-center p-2 border gap-4 shadow-md" pokemonBorderCard="red">
-            <img [src]="pokemon.picture" [alt]="pokemon.name" class="w-1/3">
-            <div id="Infos" class="flex flex-col">
-                <span class="font-semibold">{{ pokemon.name }}</span>
-                <span class="text-sm">Créé le {{ pokemon.created | date:"dd/MM/yyyy" }}</span>
-                <div id="Types" class="flex flex-col gap-1">
-                    @for (type of pokemon.types; track $index) {
-                    <span class="px-3 py-1 w-fit rounded-full text-white {{ type | pokemonTypeColor }}">{{ type
-                        }}</span>
-                    }
-                </div>
-            </div>
-        </li>
-        }
-    </ul>
-
+<header class="bg-red-700 text-white p-4 text-center text-xl font-bold tracking-wider">
+    <nav>
+        <a routerLink="/pokemons">POKÉDEX</a>
+    </nav>
+</header>
+<main class="p-4">
     <router-outlet></router-outlet>
-</div>
+</main>

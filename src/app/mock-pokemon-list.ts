@@ -1,9 +1,9 @@
-import { Pokemon } from "../interfaces/pokemon";
+import { Pokemon } from "./pokemon";
 
 export const POKEMONS: Pokemon[] = [
     {
         id: 1,
-        name: "Bulbizarre",
+        name: "Bulbasaur",
         hp: 25,
         cp: 5,
         picture: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png',
