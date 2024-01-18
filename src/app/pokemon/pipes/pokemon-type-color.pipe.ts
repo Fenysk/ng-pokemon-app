@@ -17,7 +17,7 @@ export class PokemonTypeColorPipe implements PipeTransform {
             case 'Water':
                 color = 'blue-500';
                 break;
-            case 'Leaf':
+            case 'Grass':
                 color = 'green-500';
                 break;
             case 'Poison':
