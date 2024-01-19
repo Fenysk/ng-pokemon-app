@@ -39,7 +39,11 @@
                 <td>{{pokemon.created | date: 'dd/MM/yyyy'}}</td>
             </tr>
         </table>
-        <a routerLink="/pokemons" class="cursor-pointer hover:underline mt-4 block text-red-800">Back to list</a>
+        <div class="mt-4 flex gap-4">
+            <a routerLink="/pokemons" class="cursor-pointer hover:underline block text-red-800">Back to list</a>
+            <a routerLink="/pokemon/edit/{{pokemon.id}}" class="cursor-pointer hover:underline block text-red-800">Edit
+                {{pokemon.name}}</a>
+        </div>
     </div>
 </div>
 }

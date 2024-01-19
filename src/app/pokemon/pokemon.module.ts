@@ -6,16 +6,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListPokemonsComponent } from './components/list-pokemons/list-pokemons.component';
 import { DetailsPokemonComponent } from './components/details-pokemon/details-pokemon.component';
 import { PokemonService } from './pokemon.service';
+import { FormsModule } from '@angular/forms';
+import { PokemonFormComponent } from './components/pokemon-form/pokemon-form.component';
+import { EditPokemonComponent } from './components/edit-pokemon/edit-pokemon.component';
 
 const pokemonRoutes: Routes = [
     {
-        path: 'pokemons',
-        component: ListPokemonsComponent
+        path: 'pokemon/edit/:id',
+        component: EditPokemonComponent
     },
     {
         path: 'pokemon/:id',
         component: DetailsPokemonComponent
-    }
+    },
+    {
+        path: 'pokemons',
+        component: ListPokemonsComponent
+    },
 ]
 
 @NgModule({
@@ -25,8 +32,10 @@ const pokemonRoutes: Routes = [
         RouterModule.forChild(pokemonRoutes),
         ListPokemonsComponent,
         DetailsPokemonComponent,
+        PokemonFormComponent,
         PokemonBorderCardDirective,
-        PokemonTypeColorPipe
+        PokemonTypeColorPipe,
+        FormsModule
     ],
     providers: [PokemonService]
 })
