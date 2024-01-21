@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Pokemon } from '../../interfaces/pokemon.interface';
-import { PokemonService } from '../../pokemon.service';
-import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Pokemon } from '../../interfaces/pokemon.interface';
 import { PokemonTypeColorPipe } from '../../pipes/pokemon-type-color.pipe';
+import { PokemonService } from '../../pokemon.service';
 
 @Component({
     selector: 'pokemon-form',
@@ -54,8 +54,11 @@ export class PokemonFormComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log('Submit form');
-        this.router.navigate(['/pokemon', this.pokemon.id]);
+        this.pokemonService.updatePokemon(this.pokemon)
+            .subscribe((pokemon) => {
+                if (pokemon) this.router.navigate(['/pokemon', pokemon.id])
+                else alert('Error updating pokemon')
+            });
     }
 
 }
