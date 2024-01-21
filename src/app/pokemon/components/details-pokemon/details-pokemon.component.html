@@ -43,6 +43,8 @@
             <a routerLink="/pokemons" class="cursor-pointer hover:underline block text-red-800">Back to list</a>
             <a routerLink="/pokemon/edit/{{pokemon.id}}" class="cursor-pointer hover:underline block text-red-800">Edit
                 {{pokemon.name}}</a>
+            <a (click)="deletePokemon(pokemon)" class="cursor-pointer hover:underline block text-red-800">Delete
+                {{pokemon.name}}</a>
         </div>
     </div>
 </div>

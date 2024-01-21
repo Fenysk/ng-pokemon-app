@@ -32,6 +32,12 @@ export class PokemonService {
             catchError((error) => this.handleError(error, undefined)));
     }
 
+    deletePokemonById(pokemonId: number): Observable<Pokemon | undefined> {
+        return this.httpClient.delete<Pokemon>(`${this.baseUrl}/pokemons/${pokemonId}`).pipe(
+            tap((pokemon) => this.log(pokemon)),
+            catchError((error) => this.handleError(error, undefined)));
+    }
+
     private log(response: Pokemon[] | Pokemon | undefined) {
         console.table(response);
     }

@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Pokemon } from '../../interfaces/pokemon.interface';
 import { PokemonTypeColorPipe } from '../../pipes/pokemon-type-color.pipe';
 import { PokemonService } from '../../pokemon.service';
@@ -16,7 +16,8 @@ export class DetailsPokemonComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private readonly pokemonService: PokemonService
+        private router: Router,
+        private readonly pokemonService: PokemonService,
     ) { }
 
     pokemonList: Pokemon[];
@@ -28,6 +29,15 @@ export class DetailsPokemonComponent implements OnInit {
 
         this.pokemonService.getPokemonById(this.pokemonId)
             .subscribe(pokemon => this.pokemon = pokemon);
+    }
+
+    deletePokemon(pokemon: Pokemon) {
+        const isConfirmed = confirm(`Are you sure you want to delete ${pokemon.name}?`);
+
+        if (!isConfirmed) return;
+
+        this.pokemonService.deletePokemonById(pokemon.id)
+            .subscribe(() => this.router.navigate(['/pokemons']));
     }
 
 }
