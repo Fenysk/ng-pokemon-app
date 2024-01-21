@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, of, tap } from 'rxjs';
-import { Pokemon } from './interfaces/pokemon.interface';
+import { Pokemon } from './models/pokemon.model';
 
 @Injectable()
 export class PokemonService {
@@ -18,6 +18,16 @@ export class PokemonService {
 
     getPokemonById(pokemonId: number): Observable<Pokemon | undefined> {
         return this.httpClient.get<Pokemon>(`${this.baseUrl}/pokemons/${pokemonId}`).pipe(
+            tap((pokemon) => this.log(pokemon)),
+            catchError((error) => this.handleError(error, undefined)));
+    }
+
+    createPokemon(pokemon: Pokemon): Observable<Pokemon | undefined> {
+        const httpOptions = {
+            headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+        };
+
+        return this.httpClient.post<Pokemon>(`${this.baseUrl}/pokemons`, pokemon, httpOptions).pipe(
             tap((pokemon) => this.log(pokemon)),
             catchError((error) => this.handleError(error, undefined)));
     }
@@ -64,7 +74,8 @@ export class PokemonService {
             'Rock',
             'Ghost',
             'Ice',
-            'Dragon'
+            'Dragon',
+            'Steel',
         ];
     }
 

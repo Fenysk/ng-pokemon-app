@@ -51,7 +51,7 @@ export class PokemonTypeColorPipe implements PipeTransform {
                 color = 'orange-900';
                 break;
             case 'Steel':
-                color = 'blue-600';
+                color = 'gray-500';
                 break;
             case 'Ice':
                 color = 'blue-200';

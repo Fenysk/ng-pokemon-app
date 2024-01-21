@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Pokemon } from '../../interfaces/pokemon.interface';
+import { Pokemon } from '../../models/pokemon.model';
 import { PokemonTypeColorPipe } from '../../pipes/pokemon-type-color.pipe';
 import { PokemonService } from '../../pokemon.service';
 
@@ -21,9 +21,11 @@ export class PokemonFormComponent implements OnInit {
 
     @Input() pokemon: Pokemon;
     pokemonTypeList: string[];
+    isAddForm: boolean = false;
 
     ngOnInit(): void {
         this.pokemonTypeList = this.pokemonService.getPokemonTypeList();
+        this.isAddForm = this.router.url.includes('create');
     }
 
     hasType(type: string): boolean {
@@ -54,11 +56,19 @@ export class PokemonFormComponent implements OnInit {
     }
 
     onSubmit() {
-        this.pokemonService.updatePokemon(this.pokemon)
-            .subscribe((pokemon) => {
-                if (pokemon) this.router.navigate(['/pokemon', pokemon.id])
-                else alert('Error updating pokemon')
-            });
+        if (this.isAddForm) {
+            this.pokemonService.createPokemon(this.pokemon)
+                .subscribe((pokemon) => {
+                    if (pokemon) this.router.navigate(['/pokemon', pokemon.id])
+                    else alert('Error creating pokemon')
+                });
+        } else {
+            this.pokemonService.updatePokemon(this.pokemon)
+                .subscribe((pokemon) => {
+                    if (pokemon) this.router.navigate(['/pokemon', pokemon.id])
+                    else alert('Error updating pokemon')
+                });
+        }
     }
 
 }

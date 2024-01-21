@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Pokemon } from '../../interfaces/pokemon.interface';
+import { Pokemon } from '../../models/pokemon.model';
 import { PokemonService } from '../../pokemon.service';
 import { PokemonFormComponent } from "../pokemon-form/pokemon-form.component";
 

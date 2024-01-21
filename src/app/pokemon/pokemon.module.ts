@@ -7,6 +7,7 @@ import { DetailsPokemonComponent } from './components/details-pokemon/details-po
 import { EditPokemonComponent } from './components/edit-pokemon/edit-pokemon.component';
 import { ListPokemonsComponent } from './components/list-pokemons/list-pokemons.component';
 import { PokemonFormComponent } from './components/pokemon-form/pokemon-form.component';
+import { CreatePokemonComponent } from './create-pokemon/create-pokemon.component';
 import { PokemonBorderCardDirective } from './directives/border-card.directive';
 import { PokemonTypeColorPipe } from './pipes/pokemon-type-color.pipe';
 import { PokemonService } from './pokemon.service';
@@ -15,6 +16,10 @@ const pokemonRoutes: Routes = [
     {
         path: 'pokemon/edit/:id',
         component: EditPokemonComponent
+    },
+    {
+        path: 'pokemon/create',
+        component: CreatePokemonComponent
     },
     {
         path: 'pokemon/:id',

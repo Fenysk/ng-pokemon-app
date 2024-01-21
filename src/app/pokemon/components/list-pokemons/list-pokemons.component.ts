@@ -2,7 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { PokemonBorderCardDirective } from '../../directives/border-card.directive';
-import { Pokemon } from '../../interfaces/pokemon.interface';
+import { Pokemon } from '../../models/pokemon.model';
 import { PokemonTypeColorPipe } from '../../pipes/pokemon-type-color.pipe';
 import { PokemonService } from '../../pokemon.service';
 

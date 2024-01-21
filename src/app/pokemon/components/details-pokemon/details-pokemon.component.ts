@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { Pokemon } from '../../interfaces/pokemon.interface';
+import { Pokemon } from '../../models/pokemon.model';
 import { PokemonTypeColorPipe } from '../../pipes/pokemon-type-color.pipe';
 import { PokemonService } from '../../pokemon.service';
 

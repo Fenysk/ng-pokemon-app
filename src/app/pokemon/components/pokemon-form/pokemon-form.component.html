@@ -1,4 +1,4 @@
-@if (pokemon) {
+@if (pokemon || isAddForm) {
 <form (ngSubmit)="onSubmit()" #pokemonForm="ngForm">
     <!-- On remplace la logique du formulaire par la directive ngForm pour gérer la validation -->
 
@@ -10,6 +10,16 @@
         <!-- Si le champ est valide OU si le champ n'a pas encore été touché, on cache. -->
         <div [hidden]="name.valid || name.pristine">Pokemons name is required (1-25 characters).</div>
     </div>
+
+    <!-- Pokemon picture -->
+    @if (isAddForm) {
+    <div class="field">
+        <label for="picture">Picture</label>
+        <input required type="text" id="picture" pattern="^https?://.+$" [(ngModel)]="pokemon.picture" name="picture"
+            #picture="ngModel" />
+        <div [hidden]="picture.valid || picture.pristine">Pokemons picture is required.</div>
+    </div>
+    }
 
     <!-- Pokemon HP -->
     <div class="field">
