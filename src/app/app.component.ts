@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
     imports: [
         CommonModule,
         RouterOutlet,
+        HttpClientModule,
         RouterModule,
         FormsModule
     ],

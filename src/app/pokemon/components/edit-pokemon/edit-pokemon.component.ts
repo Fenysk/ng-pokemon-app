@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from '../../interfaces/pokemon.interface';
 import { ActivatedRoute } from '@angular/router';
+import { Pokemon } from '../../interfaces/pokemon.interface';
 import { PokemonService } from '../../pokemon.service';
 import { PokemonFormComponent } from "../pokemon-form/pokemon-form.component";
 
@@ -22,9 +22,8 @@ export class EditPokemonComponent implements OnInit {
 
     ngOnInit(): void {
         const pokemonId: number = Number(this.route.snapshot.paramMap.get('id'));
-        console.log(pokemonId);
-        this.pokemon = this.pokemonService.getPokemonById(pokemonId);
-        console.log(this.pokemon);
+        this.pokemonService.getPokemonById(pokemonId)
+            .subscribe(pokemon => this.pokemon = pokemon)
     }
 
 }

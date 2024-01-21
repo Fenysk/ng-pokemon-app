@@ -1,13 +1,5 @@
 <h1 class="text-xl text-center">Pokemons list</h1>
 
-@if (pokemonSelected) {
-<p>You have selected the pokemon {{ pokemonSelected.name }}</p>
-} @else {
-<p>No pokemon selected.</p>
-}
-
-<input class="border-2 p-1" type="number" placeholder="Pokemon's id" #input (keyup.enter)="selectPokemon(+input.value)">
-
 <ul class="grid gap-4 leading-5 mt-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
     @for (pokemon of pokemonList; track pokemon.id) {
     <li>

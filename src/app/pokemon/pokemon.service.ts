@@ -1,19 +1,37 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, catchError, of, tap } from 'rxjs';
 import { Pokemon } from './interfaces/pokemon.interface';
-import { POKEMONS } from './data/mock-pokemon-list';
 
 @Injectable()
 export class PokemonService {
 
-    getPokemonList(): Pokemon[] {
-        return POKEMONS;
+    constructor(private httpClient: HttpClient) { }
+
+    baseUrl = 'http://localhost:3621';
+
+    getPokemonList(): Observable<Pokemon[]> {
+        return this.httpClient.get<Pokemon[]>(`${this.baseUrl}/pokemons`).pipe(
+            tap((pokemonList) => this.log(pokemonList)),
+            catchError((error) => this.handleError(error, [])));
     }
 
-    getPokemonById(pokemonId: number): Pokemon | undefined {
-        return POKEMONS.find(pokemon => pokemon.id === pokemonId);
+    getPokemonById(pokemonId: number): Observable<Pokemon | undefined> {
+        return this.httpClient.get<Pokemon>(`${this.baseUrl}/pokemons/${pokemonId}`).pipe(
+            tap((pokemon) => this.log(pokemon)),
+            catchError((error) => this.handleError(error, undefined)));
     }
 
-    getPokemonTypeList(): any[] {
+    private log(response: Pokemon[] | Pokemon | undefined) {
+        console.table(response);
+    }
+
+    private handleError(error: Error, errorValue: any) {
+        console.error(error);
+        return of(errorValue);
+    }
+
+    getPokemonTypeList(): string[] {
         return [
             'Grass',
             'Fire',

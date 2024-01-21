@@ -1,14 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { DetailsPokemonComponent } from './components/details-pokemon/details-pokemon.component';
+import { EditPokemonComponent } from './components/edit-pokemon/edit-pokemon.component';
+import { ListPokemonsComponent } from './components/list-pokemons/list-pokemons.component';
+import { PokemonFormComponent } from './components/pokemon-form/pokemon-form.component';
 import { PokemonBorderCardDirective } from './directives/border-card.directive';
 import { PokemonTypeColorPipe } from './pipes/pokemon-type-color.pipe';
-import { RouterModule, Routes } from '@angular/router';
-import { ListPokemonsComponent } from './components/list-pokemons/list-pokemons.component';
-import { DetailsPokemonComponent } from './components/details-pokemon/details-pokemon.component';
 import { PokemonService } from './pokemon.service';
-import { FormsModule } from '@angular/forms';
-import { PokemonFormComponent } from './components/pokemon-form/pokemon-form.component';
-import { EditPokemonComponent } from './components/edit-pokemon/edit-pokemon.component';
 
 const pokemonRoutes: Routes = [
     {
@@ -35,8 +36,9 @@ const pokemonRoutes: Routes = [
         PokemonFormComponent,
         PokemonBorderCardDirective,
         PokemonTypeColorPipe,
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ],
-    providers: [PokemonService]
+    providers: [PokemonService,]
 })
 export class PokemonModule { }
