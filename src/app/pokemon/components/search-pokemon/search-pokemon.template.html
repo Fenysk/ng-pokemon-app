@@ -1,0 +1,25 @@
+<div id="SearchBox">
+    <input type="text" placeholder="Search Pokemon" #term (keyup)="search(term.value)" />
+
+    <ul [hidden]="!term.value.length">
+        @for (pokemon of pokemons$ | async; track pokemon.id) {
+
+        <li>
+            <a routerLink="/pokemon/{{ pokemon.id }}" class="flex items-center gap-4">
+                <img src="{{ pokemon.picture }}" alt="{{ pokemon.name }}" class="w-12 h-12" />
+                <span>{{ pokemon.name }}</span>
+            </a>
+        </li>
+
+        }
+
+        @empty {
+
+        <li>
+            {{ term.value.length > 2 ? 'No results' : 'Type at least 3 characters'}}
+        </li>
+
+        }
+    </ul>
+
+</div>

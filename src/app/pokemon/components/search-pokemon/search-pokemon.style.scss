@@ -1,0 +1,21 @@
+input {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 4px;
+}
+
+ul {
+    border: 1px solid #ccc;
+    padding: 4px;
+
+    li {
+
+        &:not(:first-child) {
+            border-top: 1px solid #ccc;
+        }
+
+        &:hover {
+            background-color: #ccc;
+        }
+    }
+}

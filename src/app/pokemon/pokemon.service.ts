@@ -20,6 +20,15 @@ export class PokemonService {
             catchError((error) => this.handleError(error, undefined)));
     }
 
+    searchPokemon(term: string): Observable<Pokemon[]> {
+        if (term.length < 3) return of([]);
+
+        return this.httpClient.get<Pokemon[]>(`api/pokemons?name=${term}`).pipe(
+            tap((pokemonList) => this.log(pokemonList)),
+            catchError((error) => this.handleError(error, []))
+        );
+    }
+
     createPokemon(pokemon: Pokemon): Observable<Pokemon> {
         const httpOptions = {
             headers: new HttpHeaders({ 'Content-Type': 'application/json' })
