@@ -1,0 +1,30 @@
+form {
+
+    div {
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: block;
+    }
+
+    input {
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        padding: 4px;
+    }
+
+}
+
+button {
+    margin-top: 1rem;
+    border: 2px solid #ccc;
+    padding: 4px 8px;
+    background: #eee;
+    border-radius: 4px;
+
+    &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+}

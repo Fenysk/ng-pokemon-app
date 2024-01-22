@@ -1,0 +1,28 @@
+<div class="mx-auto w-72 mt-8">
+    <h1 class="text-xl text-center font-semibold">Please sign in</h1>
+
+    <p class="my-8">{{ message }}</p>
+
+    @if (!isLoggedIn) {
+    <form #loginForm="ngForm">
+        <div class="field">
+            <label for="pseudo">Pseudo</label>
+            <input required type="text" id="pseudo" pattern="^[a-zA-Z0-9]{3,}$" [(ngModel)]="pseudo" name="pseudo" />
+        </div>
+
+        <div class="field">
+            <label for="password">Password</label>
+            <input required type="password" id="password" pattern=".{8,}" [(ngModel)]="password" name="password" />
+        </div>
+
+
+        <button type="submit" (click)="handleLogin()" [disabled]="!loginForm.form.valid">Login</button>
+    </form>
+
+    } @else {
+
+    <button type="button" (click)="handleLogout()">Logout</button>
+
+    }
+
+</div>
