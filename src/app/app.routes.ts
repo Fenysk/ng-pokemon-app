@@ -6,9 +6,17 @@ import { PokemonModule } from './pokemon/pokemon.module';
 export const routes: Routes = [
     { path: '', redirectTo: 'pokemons', pathMatch: 'full' },
 
-    { path: 'login', component: LoginComponent },
+    {
+        path: 'login',
+        title: 'Login',
+        component: LoginComponent
+    },
 
     { path: '', loadChildren: () => PokemonModule },
 
-    { path: '**', component: PageNotFoundComponent }
+    {
+        path: '**',
+        title: 'Page not found',
+        component: PageNotFoundComponent
+    }
 ];
