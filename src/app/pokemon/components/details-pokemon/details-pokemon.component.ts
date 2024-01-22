@@ -4,9 +4,10 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Pokemon } from '../../models/pokemon.model';
 import { PokemonTypeColorPipe } from '../../pipes/pokemon-type-color.pipe';
 import { PokemonService } from '../../pokemon.service';
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
-    imports: [RouterModule, DatePipe, PokemonTypeColorPipe],
+    imports: [RouterModule, DatePipe, PokemonTypeColorPipe, LoaderComponent],
     selector: 'app-details-pokemon',
     standalone: true,
     templateUrl: 'details-pokemon.component.html',

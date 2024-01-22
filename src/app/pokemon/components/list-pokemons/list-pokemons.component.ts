@@ -5,10 +5,11 @@ import { PokemonBorderCardDirective } from '../../directives/border-card.directi
 import { Pokemon } from '../../models/pokemon.model';
 import { PokemonTypeColorPipe } from '../../pipes/pokemon-type-color.pipe';
 import { PokemonService } from '../../pokemon.service';
+import { LoaderComponent } from '../loader/loader.component';
 import { SearchPokemonComponent } from '../search-pokemon/search-pokemon.component';
 
 @Component({
-    imports: [PokemonBorderCardDirective, PokemonTypeColorPipe, DatePipe, RouterModule, SearchPokemonComponent],
+    imports: [PokemonBorderCardDirective, PokemonTypeColorPipe, DatePipe, RouterModule, SearchPokemonComponent, LoaderComponent],
     selector: 'app-list-pokemons',
     standalone: true,
     templateUrl: './list-pokemons.component.html',

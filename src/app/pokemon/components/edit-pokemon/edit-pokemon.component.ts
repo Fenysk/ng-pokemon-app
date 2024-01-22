@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Pokemon } from '../../models/pokemon.model';
 import { PokemonService } from '../../pokemon.service';
+import { LoaderComponent } from '../loader/loader.component';
 import { PokemonFormComponent } from "../pokemon-form/pokemon-form.component";
 
 @Component({
+    imports: [PokemonFormComponent, LoaderComponent],
     selector: 'app-edit-pokemon',
     standalone: true,
     templateUrl: './edit-pokemon.component.html',
     styles: ``,
-    imports: [PokemonFormComponent]
 })
 export class EditPokemonComponent implements OnInit {
 

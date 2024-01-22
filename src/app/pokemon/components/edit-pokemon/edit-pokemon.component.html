@@ -1,3 +1,4 @@
+@defer (when pokemon; on timer(1s)) {
 <h2 class="text-2xl text-center">Edit {{ pokemon?.name }}</h2>
 
 @if (pokemon) {
@@ -7,4 +8,9 @@
 
 } @else {
 <h2 class="text-center">No pokemon selected</h2>
+}
+}
+
+@placeholder {
+<app-loader></app-loader>
 }

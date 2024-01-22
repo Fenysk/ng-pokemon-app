@@ -1,3 +1,4 @@
+@defer (when pokemonList; on timer(1s)) {
 <h1 class="text-xl text-center">Pokemons list</h1>
 
 <search-pokemon></search-pokemon>
@@ -22,3 +23,9 @@
     </li>
     }
 </ul>
+
+}
+
+@placeholder {
+<app-loader></app-loader>
+}
